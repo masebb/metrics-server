@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sd_node
+data:
+  sd_node.yaml: |
+- targets:
+  - 10.0.0.3
+  labels:
+    name: "01manage1P"
+    type: "compute"
+    vm: false
+    region: "01"
+- targets:
+  - 10.0.0.7
+  labels:
+    name: "privservice1V"
+    type: "compute"
+    vm: true
+- targets:
+  - 10.0.0.9
+  labels:
+    name: "pubservice1V"
+    type: "compute"
+    vm: true
+- targets:
+  - 10.0.0.4
+  labels:
+    name: "01vmhost1P"
+    type: "compute"
+    vm: false

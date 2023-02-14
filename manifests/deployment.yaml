@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: prometheus
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: prometheus
+      namespace: metrics-servers
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: prom/prometheus:v2.42.0
+        ports:
+          - containerPort: 9090
+        volumeMounts:
+          - name: prometheus_data
+            mountPath: "/prometheus"
+          - name: prometheus_configs
+            mountPath: "/etc/prometheus"
+          - name: prometheus_rules
+            mountPath: "/etc/prometheus/rules"
+      volumes:
+        - name: prometheus-pvc
+          persistentVolumeClaim:
+            claimName: prometheus-pvc
+        - name: prometheus_config
+          sources: 
+            - configmap:
+              name: sd_cadvisor
+            - configmap:
+              name: sd_node
+            - configmap:
+              name: sd_snmp_ifmib
+            - configmap:
+              name: sd_snmp_nec_ix
+        - name: prometheus_rules
+          sources: 
+            - configmap:
+              name: rules_cadvisor
+            - configmap:
+              name: rules_node
+            - configmap:
+              name: rules_prometheus
+            - configmap:
+              name: rules_blackbox
