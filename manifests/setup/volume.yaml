@@ -6,22 +6,10 @@ metadata:
 spec:
   capacity:
     storage: 40Gi
-  storageClassName: normal
+  storageClassName: ""
   accessModes:
     - ReadWriteMany
   nfs:
     server: 02cluster1v.subnet1.vcn01231245.oraclevcn.com
     path: /k8s-pv
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: prometheus-pvc
-  namespace: metrics-servers
-spec:
-  storageClassName: normal
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
+    readOnly: false

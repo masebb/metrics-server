@@ -52,3 +52,16 @@ spec:
                   name: rules-prometheus
               - configMap:
                   name: rules-blackbox
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-pvc
+  namespace: metrics-servers
+spec:
+  storageClassName: ""
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
