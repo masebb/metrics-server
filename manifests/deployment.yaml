@@ -28,7 +28,6 @@ spec:
             mountPath: "/etc/prometheus/rules"
       volumes:
         - name: prometheus-data
-          storageClassName: prometheus
           persistentVolumeClaim:
             claimName: prometheus-pvc
         - name: prometheus-configs
