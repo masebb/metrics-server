@@ -4,6 +4,9 @@ metadata:
   name: prometheus
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
   template:
     metadata:
       name: prometheus
@@ -11,9 +14,6 @@ spec:
       labels:
         app: prometheus
     spec:
-      selector:
-        matchLabels:
-          app: prometheus
       containers:
       - name: prometheus
         image: prom/prometheus:v2.42.0
