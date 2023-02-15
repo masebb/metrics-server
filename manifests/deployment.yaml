@@ -46,17 +46,17 @@ spec:
                   name: sd-snmp-ifmib
               - configMap:
                   name: sd-snmp-nec-ix
-        # - name: prometheus-rules
-        #   projected:
-        #     sources: 
-        #       - configMap:
-        #           name: rules-cadvisor
-        #       - configMap:
-        #           name: rules-node
-        #       - configMap:
-        #           name: rules-prometheus
-        #       - configMap:
-        #           name: rules-blackbox
+        - name: prometheus-rules
+          projected:
+            sources: 
+              - configMap:
+                  name: rules-cadvisor
+              - configMap:
+                  name: rules-node
+              - configMap:
+                  name: rules-prometheus
+              - configMap:
+                  name: rules-blackbox
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
