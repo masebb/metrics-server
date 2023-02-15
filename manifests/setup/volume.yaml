@@ -18,6 +18,7 @@ metadata:
   name: prometheus-pvc
   namespace: metrics-servers
 spec:
+  storageClassName: prometheus
   selector:
     matchLabels:
       name: nfs-pv
