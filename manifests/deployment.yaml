@@ -31,21 +31,21 @@ spec:
           projected:
             sources: 
               - configmap:
-                name: sd-cadvisor
+                  name: sd-cadvisor
               - configmap:
-                name: sd-node
+                  name: sd-node
               - configmap:
-                name: sd-snmp-ifmib
+                  name: sd-snmp-ifmib
               - configmap:
-                name: sd-snmp-nec-ix
+                  name: sd-snmp-nec-ix
         - name: prometheus_rules
           projected:
             sources: 
               - configmap:
-                name: rules-cadvisor
+                  name: rules-cadvisor
               - configmap:
-                name: rules-node
+                  name: rules-node
               - configmap:
-                name: rules-prometheus
+                  name: rules-prometheus
               - configmap:
-                name: rules-blackbox
+                  name: rules-blackbox
