@@ -30,20 +30,20 @@ spec:
         - name: prometheus_config
           sources: 
             - configmap:
-              name: sd_cadvisor
+              name: sd-cadvisor
             - configmap:
-              name: sd_node
+              name: sd-node
             - configmap:
-              name: sd_snmp_ifmib
+              name: sd-snmp-ifmib
             - configmap:
-              name: sd_snmp_nec_ix
+              name: sd-snmp-nec-ix
         - name: prometheus_rules
           sources: 
             - configmap:
-              name: rules_cadvisor
+              name: rules-cadvisor
             - configmap:
-              name: rules_node
+              name: rules-node
             - configmap:
-              name: rules_prometheus
+              name: rules-prometheus
             - configmap:
-              name: rules_blackbox
+              name: rules-blackbox
