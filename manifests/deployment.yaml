@@ -28,22 +28,24 @@ spec:
           persistentVolumeClaim:
             claimName: prometheus-pvc
         - name: prometheus_config
-          sources: 
-            - configmap:
-              name: sd-cadvisor
-            - configmap:
-              name: sd-node
-            - configmap:
-              name: sd-snmp-ifmib
-            - configmap:
-              name: sd-snmp-nec-ix
+          projected:
+            sources: 
+              - configmap:
+                name: sd-cadvisor
+              - configmap:
+                name: sd-node
+              - configmap:
+                name: sd-snmp-ifmib
+              - configmap:
+                name: sd-snmp-nec-ix
         - name: prometheus_rules
-          sources: 
-            - configmap:
-              name: rules-cadvisor
-            - configmap:
-              name: rules-node
-            - configmap:
-              name: rules-prometheus
-            - configmap:
-              name: rules-blackbox
+          projected:
+            sources: 
+              - configmap:
+                name: rules-cadvisor
+              - configmap:
+                name: rules-node
+              - configmap:
+                name: rules-prometheus
+              - configmap:
+                name: rules-blackbox
