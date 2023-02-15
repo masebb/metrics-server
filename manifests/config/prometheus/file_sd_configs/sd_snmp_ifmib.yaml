@@ -4,21 +4,22 @@ metadata:
   name: sd_snmp_ifmib
 data:
   sd_snmp_ifmib.yaml: |
-- targets:
-  - 10.0.0.2
-  labels:
-    name: "01SW1P"
-    type: "network"
-    region: "01"
-- targets:
-  - 10.0.0.6
-  labels:
-    name: "01ap1P"
-    type: "network"
-    region: "01"
-- targets:
-  - 10.0.0.8
-  labels:
-    name: "eRT2V"
-    type: "network"
-    vm: true
+    - targets:
+      - 10.0.0.2
+      labels:
+        name: "01SW1P"
+        type: "network"
+        region: "01"
+    - targets:
+      - 10.0.0.6
+      labels:
+        name: "01ap1P"
+        type: "network"
+        region: "01"
+    - targets:
+      - 10.0.0.8
+      labels:
+        name: "eRT2V"
+        type: "network"
+        vm: true
+    

@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: sd_snmp_nec_ix.yaml
+  name: sd_snmp_nec_ix
 data:
-  my-properties-file.yaml: |
-- targets:
-  - 10.0.0.1
-  labels:
-    name: "01eRT1P"
-    type: "network"
+  sd_snmp_nec_ix.yaml: |
+    - targets:
+      - 10.0.0.1
+      labels:
+        name: "01eRT1P"
+        type: "network"
+    
