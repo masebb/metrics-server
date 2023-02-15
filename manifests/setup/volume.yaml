@@ -20,9 +20,6 @@ metadata:
   namespace: metrics-servers
 spec:
   storageClassName: normal
-  selector:
-    matchLabels:
-      name: nfs-pv
   accessModes:
   - ReadWriteOnce
   resources:
