@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: prom/prometheus:v2.42.0
+        image: busybox
         ports:
           - containerPort: 9090
         volumeMounts:
