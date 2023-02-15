@@ -17,17 +17,17 @@ spec:
         ports:
           - containerPort: 9090
         volumeMounts:
-          - name: prometheus_data
+          - name: prometheus-data
             mountPath: "/prometheus"
-          - name: prometheus_configs
+          - name: prometheus-configs
             mountPath: "/etc/prometheus"
-          - name: prometheus_rules
+          - name: prometheus-rules
             mountPath: "/etc/prometheus/rules"
       volumes:
-        - name: prometheus-pvc
+        - name: prometheus-data
           persistentVolumeClaim:
             claimName: prometheus-pvc
-        - name: prometheus_config
+        - name: prometheus-config
           projected:
             sources:
               - configMap:
@@ -38,7 +38,7 @@ spec:
                   name: sd-snmp-ifmib
               - configMap:
                   name: sd-snmp-nec-ix
-        - name: prometheus_rules
+        - name: prometheus-rules
           projected:
             sources: 
               - configMap:
