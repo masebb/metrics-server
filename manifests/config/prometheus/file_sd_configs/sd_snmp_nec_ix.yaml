@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: sd_snmp_nec_ix
+  name: sd-snmp-nec-ix
 data:
   sd_snmp_nec_ix.yaml: |
     - targets:

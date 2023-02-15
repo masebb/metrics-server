@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: rules_cadvisor
+  name: rules-cadvisor
 data:
   cadvisor.yaml: |
     groups:

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: sd_node
+  name: sd-node
 data:
   sd_node.yaml: |
     - targets:

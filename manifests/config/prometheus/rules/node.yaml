@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: rules_node
+  name: rules-node
 data:
   node.yaml: |
     groups:
