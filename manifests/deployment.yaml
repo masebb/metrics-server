@@ -26,9 +26,9 @@ spec:
           - name: prometheus-configs
             mountPath: "/etc/prometheus"
             readOnly: true
-          - name: prometheus-rules
-            mountPath: "/etc/prometheus/rules"
-            readOnly: true
+          # - name: prometheus-rules
+          #   mountPath: "/etc/prometheus/rules"
+          #   readOnly: true
       volumes:
         - name: prometheus-data
           persistentVolumeClaim:
