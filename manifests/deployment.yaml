@@ -29,23 +29,23 @@ spec:
             claimName: prometheus-pvc
         - name: prometheus_config
           projected:
-            sources: 
-              - configmap:
+            sources:
+              - configMap:
                   name: sd-cadvisor
-              - configmap:
+              - configMap:
                   name: sd-node
-              - configmap:
+              - configMap:
                   name: sd-snmp-ifmib
-              - configmap:
+              - configMap:
                   name: sd-snmp-nec-ix
         - name: prometheus_rules
           projected:
             sources: 
-              - configmap:
+              - configMap:
                   name: rules-cadvisor
-              - configmap:
+              - configMap:
                   name: rules-node
-              - configmap:
+              - configMap:
                   name: rules-prometheus
-              - configmap:
+              - configMap:
                   name: rules-blackbox
