@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: sd-node
+  namespace: metrics-servers
 data:
   sd_node.yaml: |
     - targets:
