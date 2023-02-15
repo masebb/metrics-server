@@ -11,6 +11,8 @@ spec:
       labels:
         app: prometheus
     spec:
+      selector:
+        app: prometheus
       containers:
       - name: prometheus
         image: prom/prometheus:v2.42.0
@@ -27,7 +29,7 @@ spec:
         - name: prometheus-data
           persistentVolumeClaim:
             claimName: prometheus-pvc
-        - name: prometheus-config
+        - name: prometheus-configs
           projected:
             sources:
               - configMap:
