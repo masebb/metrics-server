@@ -25,7 +25,6 @@ spec:
             mountPath: "/prometheus"
           - name: prometheus-configs
             mountPath: "/etc/prometheus"
-            readOnly: true
           # - name: prometheus-rules
           #   mountPath: "/etc/prometheus/rules"
           #   readOnly: true
