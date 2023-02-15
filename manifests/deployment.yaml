@@ -35,6 +35,8 @@ spec:
           projected:
             sources:
               - configMap:
+                  name: prometheus
+              - configMap:
                   name: sd-cadvisor
               - configMap:
                   name: sd-node
