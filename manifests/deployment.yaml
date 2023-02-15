@@ -58,8 +58,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: prometheus-pvc
   namespace: metrics-servers
+  labels:
+    app: prometheus
 spec:
-  storageClassName: ""
   accessModes:
   - ReadWriteOnce
   resources:
