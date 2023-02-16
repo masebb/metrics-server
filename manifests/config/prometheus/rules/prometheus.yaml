@@ -4,7 +4,7 @@ metadata:
   name: rules-prometheus
   namespace: metrics-servers
 data:
-  prometheus.yaml: |
+  prometheus.yml: |
     groups:
     - name: prometheus
       rules:
