@@ -4,6 +4,5 @@ namespace: metrics-servers
 resources:
   - deployment.yaml
   - service.yaml
-  - config/file_sd_configs/*.yaml
-  - config/rules/*.yaml
+  - config/**/**/*.yaml
   - setup/*.yaml
