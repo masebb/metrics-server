@@ -4,7 +4,7 @@ metadata:
   name: prometheus
   namespace: metrics-servers
 data:
-  prometheus.yaml: |
+  prometheus.yam: |
     global:
       scrape_interval: 10s
     rule_files:
