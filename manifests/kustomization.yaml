@@ -6,7 +6,7 @@ resources:
   - service.yaml
   - setup.yaml
   - config/prometheus/prometheus.yaml
-  - config/prometheus/targers.yaml
+  - config/prometheus/targets.yaml
   - config/prometheus/rules/blackbox.yaml
   - config/prometheus/rules/cadvisor.yaml
   - config/prometheus/rules/node.yaml
