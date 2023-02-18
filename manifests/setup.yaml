@@ -1,3 +1,8 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: metrics-servers
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
