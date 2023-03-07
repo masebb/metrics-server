@@ -23,7 +23,6 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Recycle
-  storageClassName: Standard
   nfs:
     server: 02cluster1v.subnet1.vcn01231245.oraclevcn.com
     path: /k8s-pv
@@ -51,7 +50,7 @@ metadata:
   name: alertmanager
 spec:
   project: default
-  source:
+  sources:
   - repoURL: 'https://github.com/masebb/metrics-server.git'
     targetRevision: HEAD
     ref: repo
