@@ -54,8 +54,8 @@ spec:
   - repoURL: 'https://github.com/masebb/metrics-server.git'
     targetRevision: HEAD
     ref: repo
-  - repoURL: 'https://prometheus-community.github.io/helm-charts'
-    chart: prometheus-community/alertmanager
+  - chart: prometheus-community/alertmanager
+    repoURL: 'https://prometheus-community.github.io/helm-charts'
     helm:
       valueFiles:
         - $repo/alertmanager-values.yaml
@@ -71,6 +71,6 @@ metadata:
 spec: 
   project: default
   source: 
-    - repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
-      chart: alertmanagerdiscord/alertmanager-discord
+    - chart: alertmanagerdiscord/alertmanager-discord
+      repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
       targetRevision: 0.2.3
