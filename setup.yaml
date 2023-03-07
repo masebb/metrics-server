@@ -55,7 +55,7 @@ spec:
     targetRevision: HEAD
     ref: repo
   - repoURL: 'https://prometheus-community.github.io/helm-charts'
-    path: prometheus-community/alertmanager
+    chart: prometheus-community/alertmanager
     helm:
       valueFiles:
         - $repo/alertmanager-values.yaml
@@ -72,5 +72,5 @@ spec:
   project: default
   source: 
     - repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
-      path: alertmanagerdiscord/alertmanager-discord
+      chart: alertmanagerdiscord/alertmanager-discord
       targetRevision: 0.2.3
