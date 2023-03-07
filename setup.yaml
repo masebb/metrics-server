@@ -51,14 +51,14 @@ metadata:
 spec:
   project: default
   sources:
-  - repoURL: 'https://github.com/masebb/metrics-server.git'
-    targetRevision: HEAD
-    ref: repo
-  - chart: prometheus-community/alertmanager
-    repoURL: 'https://prometheus-community.github.io/helm-charts'
-    helm:
-      valueFiles:
-        - $repo/alertmanager-values.yaml
+    - repoURL: 'https://github.com/masebb/metrics-server.git'
+      targetRevision: HEAD
+      ref: repo
+    - chart: prometheus-community/alertmanager
+      repoURL: 'https://prometheus-community.github.io/helm-charts'
+      helm:
+        valueFiles:
+          - $repo/alertmanager-values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: metrics-servers
