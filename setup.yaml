@@ -71,6 +71,6 @@ metadata:
 spec: 
   project: default
   source: 
-    - chart: alertmanagerdiscord/alertmanager-discord
-      repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
-      targetRevision: 0.2.3
+    chart: alertmanagerdiscord/alertmanager-discord
+    repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
+    targetRevision: 0.2.3
