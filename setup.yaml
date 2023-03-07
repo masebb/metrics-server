@@ -1,0 +1,77 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: metrics-servers
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-dns
+  namespace: kube-system
+data:
+  stubDomains: |
+    {“01.internal”: [“10.0.0.3”]}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+  namespace: metrics-servers
+spec:
+  capacity:
+    storage: 40Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: Standard
+  nfs:
+    server: 02cluster1v.subnet1.vcn01231245.oraclevcn.com
+    path: /k8s-pv
+    readOnly: false
+---
+#prometheus
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/masebb/metrics-server.git'
+    path: prometheus/
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: metrics-servers
+---
+#alertmanager
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alertmanager
+spec:
+  project: default
+  source:
+  - repoURL: 'https://github.com/masebb/metrics-server.git'
+    targetRevision: HEAD
+    ref: repo
+  - repoURL: 'https://prometheus-community.github.io/helm-charts'
+    path: prometheus-community/alertmanager
+    helm:
+      valueFiles:
+        - $repo/alertmanager-values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: metrics-servers
+---
+#alertmanager-discord
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alertmanager
+spec: 
+  project: default
+  source: 
+    - repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
+      path: alertmanagerdiscord/alertmanager-discord
+      targetRevision: 0.2.3

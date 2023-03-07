@@ -1,0 +1,7 @@
+config:
+  route:
+    receiver: "discord_webhook"
+  receivers:
+    - name: 'discord_webhook'
+      webhook_configs:
+      - url: 'http://alertmanager-discord.metrics-server.svc.cluster.local:9094'

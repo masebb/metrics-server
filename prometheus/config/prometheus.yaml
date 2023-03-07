@@ -10,12 +10,12 @@ data:
     rule_files:
       - rules/*.yml
       - rules/*.yaml
-    # alerting:
-    #   alertmanagers:
-    #     - scheme: http
-    #       static_configs:
-    #         - targets:
-    #           - 10.1.1.3:9093
+    alerting:
+      alertmanagers:
+        - scheme: http
+          static_configs:
+            - targets:
+              - alertmanager.metrics-server.svc.cluster.local:9093
     scrape_configs:
       - job_name: "prometheus"
         static_configs:
@@ -35,7 +35,7 @@ data:
     #        target_label: instance
       - job_name: "alertmanager"
         static_configs:
-        - targets: ["10.1.1.3:9093"]
+        - targets: ["alertmanager.metrics-server.svc.cluster.local:9093"]
       - job_name: "cadvisor"
         scrape_interval: 15s
         file_sd_configs:
@@ -57,11 +57,11 @@ data:
         - source_labels: [__param_target]
           target_label: instance
         - target_label: __address__
-          replacement: 10.0.0.3:9115
+          replacement: manage1p.01.internal:9115
       - job_name: "smoke-ping"
         scrape_interval: 5m
         static_configs:
-        - targets: ["10.0.0.3:9374"]
+        - targets: ["manage1p.01.internal:9374"]
       - job_name: "snmp_if_mib"
         file_sd_configs:
         - files:
@@ -76,7 +76,7 @@ data:
         - source_labels: [__param_target]
           target_label: instance
         - target_label: __address__
-          replacement: 10.0.0.3:9116
+          replacement: manage1p.01.internal:9116
       - job_name: "snmp_nec_ix"
         file_sd_configs:
           - files:
@@ -90,11 +90,11 @@ data:
           - source_labels: [__param_target]
             target_label: instance
           - target_label: __address__
-            replacement: 10.0.0.3:9116
+            replacement: manage1p.01.internal:9116
       - job_name: "nut"
         static_configs:
           # Insert NUT server address here
-          - targets: ["10.0.0.3:3493"]
+          - targets: ["manage1p.01.internal:3493"]
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
@@ -102,7 +102,7 @@ data:
             target_label: instance
           - target_label: __address__
             # Insert NUT exporter address here
-            replacement: 10.0.0.3:9995
+            replacement: manage1p.01.internal:9995
       - job_name: "promtail"
         scrape_interval: 15s
         file_sd_configs:
