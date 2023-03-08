@@ -40,8 +40,8 @@ spec:
     path: prometheus/
     targetRevision: HEAD
   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: metrics-servers
+    - server: 'https://kubernetes.default.svc'
+      namespace: metrics-servers
 ---
 #alertmanager
 apiVersion: argoproj.io/v1alpha1
@@ -51,17 +51,17 @@ metadata:
 spec:
   project: default
   sources:
-  - repoURL: 'https://github.com/masebb/metrics-server.git'
-    targetRevision: HEAD
-    ref: repo
-  - chart: prometheus-community/alertmanager
-    repoURL: 'https://prometheus-community.github.io/helm-charts'
-    helm:
-      valueFiles:
-        - $repo/alertmanager-values.yaml
+    - repoURL: 'https://github.com/masebb/metrics-server.git'
+      targetRevision: HEAD
+      ref: myRepo
+    - chart: prometheus-community/alertmanager
+      repoURL: 'https://prometheus-community.github.io/helm-charts'
+      helm:
+        valueFiles:
+          - $myRepo/alertmanager-values.yaml
   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: metrics-servers
+    - server: 'https://kubernetes.default.svc'
+      namespace: metrics-servers
 ---
 #alertmanager-discord
 apiVersion: argoproj.io/v1alpha1
@@ -74,3 +74,6 @@ spec:
     chart: alertmanagerdiscord/alertmanager-discord
     repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
     targetRevision: 0.2.3
+  destination:
+    - server: 'https://kubernetes.default.svc'
+      namespace: metrics-servers
