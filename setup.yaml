@@ -29,7 +29,7 @@ spec:
     readOnly: false
 ---
 #prometheus
-apiVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1beta1
 kind: Application
 metadata:
   name: prometheus
@@ -40,8 +40,8 @@ spec:
     path: prometheus/
     targetRevision: HEAD
   destination:
-    - server: 'https://kubernetes.default.svc'
-      namespace: metrics-servers
+    server: 'https://kubernetes.default.svc'
+    namespace: metrics-servers
 ---
 #alertmanager
 apiVersion: argoproj.io/v1alpha1
@@ -60,20 +60,20 @@ spec:
         valueFiles:
           - $myRepo/alertmanager-values.yaml
   destination:
-    - server: 'https://kubernetes.default.svc'
-      namespace: metrics-servers
+    server: 'https://kubernetes.default.svc'
+    namespace: metrics-servers
 ---
 #alertmanager-discord
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: alertmanager
-spec: 
+  name: alertmanager-discord
+spec:
   project: default
-  source: 
+  source:
     chart: alertmanagerdiscord/alertmanager-discord
     repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
     targetRevision: 0.2.3
   destination:
-    - server: 'https://kubernetes.default.svc'
-      namespace: metrics-servers
+    server: 'https://kubernetes.default.svc'
+    namespace: metrics-servers
