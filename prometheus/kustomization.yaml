@@ -4,9 +4,9 @@ namespace: metrics-servers
 resources:
   - deployment.yaml
   - service.yaml
-  - config/prometheus/prometheus.yaml
-  - config/prometheus/targets.yaml
-  - config/prometheus/rules/blackbox.yaml
-  - config/prometheus/rules/cadvisor.yaml
-  - config/prometheus/rules/node.yaml
-  - config/prometheus/rules/prometheus.yaml
+  - config/prometheus.yaml
+  - config/targets.yaml
+  - config/rules/blackbox.yaml
+  - config/rules/cadvisor.yaml
+  - config/rules/node.yaml
+  - config/rules/prometheus.yaml
