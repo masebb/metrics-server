@@ -2,22 +2,22 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: metrics-servers
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: nfs-pv
-#   namespace: metrics-servers
-# spec:
-#   capacity:
-#     storage: 40Gi
-#   accessModes:
-#     - ReadWriteMany
-#   persistentVolumeReclaimPolicy: Recycle
-#   nfs:
-#     server: 02cluster1v.subnet1.vcn01231245.oraclevcn.com
-#     path: /k8s-pv
-#     readOnly: false
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+  namespace: metrics-servers
+spec:
+  capacity:
+    storage: 40Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    server: 02cluster1v.subnet1.vcn01231245.oraclevcn.com
+    path: /k8s-pv
+    readOnly: false
 ---
 #prometheus
 apiVersion: argoproj.io/v1alpha1
