@@ -2,22 +2,22 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: metrics-servers
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nfs-pv
-  namespace: metrics-servers
-spec:
-  capacity:
-    storage: 40Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    server: 02cluster1v.subnet1.vcn01231245.oraclevcn.com
-    path: /k8s-pv
-    readOnly: false
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: nfs-pv
+#   namespace: metrics-servers
+# spec:
+#   capacity:
+#     storage: 40Gi
+#   accessModes:
+#     - ReadWriteMany
+#   persistentVolumeReclaimPolicy: Recycle
+#   nfs:
+#     server: 02cluster1v.subnet1.vcn01231245.oraclevcn.com
+#     path: /k8s-pv
+#     readOnly: false
 ---
 #prometheus
 apiVersion: argoproj.io/v1alpha1
@@ -46,14 +46,15 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: 'https://github.com/masebb/metrics-server.git'
-      targetRevision: HEAD
-      ref: myRepo
     - chart: prometheus-community/alertmanager
       repoURL: 'https://prometheus-community.github.io/helm-charts'
+      targetRevision: HEAD
       helm:
         valueFiles:
           - $myRepo/alertmanager-values.yaml
+    - repoURL: 'https://github.com/masebb/metrics-server.git'
+      targetRevision: HEAD
+      ref: myRepo
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: metrics-servers
@@ -71,7 +72,7 @@ spec:
   source:
     chart: alertmanagerdiscord/alertmanager-discord
     repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
-    targetRevision: 0.2.3
+    targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: metrics-servers
