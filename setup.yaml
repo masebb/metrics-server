@@ -33,6 +33,8 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: metrics-servers
+  syncPolicy:
+    automated: {}
 ---
 #alertmanager
 apiVersion: argoproj.io/v1alpha1
@@ -53,6 +55,8 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: metrics-servers
+  syncPolicy:
+    automated: {}
 ---
 #alertmanager-discord
 apiVersion: argoproj.io/v1alpha1
@@ -68,3 +72,5 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: metrics-servers
+  syncPolicy:
+    automated: {}
