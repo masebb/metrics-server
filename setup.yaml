@@ -24,6 +24,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: prometheus
+  namespace: argocd
 spec:
   project: default
   source:
@@ -41,6 +42,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: alertmanager
+  namespace: argocd
 spec:
   project: default
   sources:
@@ -63,6 +65,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: alertmanager-discord
+  namespace: argocd
 spec:
   project: default
   source:
