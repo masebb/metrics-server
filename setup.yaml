@@ -46,7 +46,7 @@ metadata:
 spec:
   project: default
   sources:
-    - chart: prometheus-community/alertmanager
+    - chart: alertmanager
       repoURL: 'https://prometheus-community.github.io/helm-charts'
       targetRevision: 0.26.0
       helm:
@@ -70,7 +70,7 @@ metadata:
 spec:
   project: default
   source:
-    chart: alertmanagerdiscord/alertmanager-discord
+    chart: alertmanager-discord
     repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
     targetRevision: 0.0.0-local
   destination:
