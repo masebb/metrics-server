@@ -23,6 +23,7 @@ spec:
         volumeMounts:
           - name: prometheus-data
             mountPath: "/prometheus"
+            subPath: "prometheus"
           - name: prometheus-configs
             mountPath: "/etc/prometheus"
             readOnly: true
