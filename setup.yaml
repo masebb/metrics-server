@@ -1,8 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+---
 #kube-prometheus-stack configs
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: kube-prometheus-stack-config
   namespace: argocd
 spec:
   project: default
@@ -13,12 +18,14 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
+  syncPolicy:
+    automated: {}
 ---
 #kube-prometheus-stack
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: kube-prometheus-stack
   namespace: argocd
 spec:
   project: default
@@ -27,8 +34,8 @@ spec:
       repoURL: https://prometheus-community.github.io/helm-charts
       targetRevision: 45.7.1
       helm:
-          valueFiles:
-            - $myRepo/values/kube-prometheus-stack.yaml
+        valueFiles:
+          - $myRepo/values/kube-prometheus-stack.yaml
     - repoURL: 'https://github.com/masebb/metrics-server.git'
       targetRevision: HEAD
       ref: myRepo

@@ -1,5 +1,5 @@
-promethes:
-  promethesSpec:
+prometheus:
+  prometheusSpec:
     scrapeInterval: "10s"
     configMaps:
      - "prometeus-targets"
