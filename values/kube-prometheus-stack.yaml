@@ -1,22 +1,9 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: prometheus
-  namespace: metrics-servers
-data:
-  prometheus.yml: |
-    global:
-      scrape_interval: 10s
-    rule_files:
-      - rules/*.yml
-      - rules/*.yaml
-    alerting:
-      alertmanagers:
-        - scheme: http
-          static_configs:
-            - targets:
-              - alertmanager.metrics-server.svc.cluster.local:9093
-    scrape_configs:
+promethes:
+  promethesSpec:
+    scrapeInterval: "10s"
+    configMaps:
+     - "prometeus-targets"
+    additionalScrapeConfigs: 
       - job_name: "prometheus"
         static_configs:
         - targets: ["localhost:9090"]
@@ -116,4 +103,3 @@ data:
     #        target_label: __param_target
     #      - source_labels: [__param_target]
     #        target_label: instance
-

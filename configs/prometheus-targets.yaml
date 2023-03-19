@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: sd-node
-  namespace: metrics-servers
+  name: prometeus-targets
 data:
   sd_node.yaml: |
     - targets:
@@ -18,26 +17,11 @@ data:
         name: "01vmhost1p"
         type: "compute"
         vm: false
-    
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: sd-cadvisor
-  namespace: metrics-servers
-data:
   sd_cadvisor.yaml: |-
     - targets:
       - manage1p.01.internal:4194
       labels:
         name: "01manage1p"
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: sd-snmp-ifmib
-  namespace: metrics-servers
-data:
   sd_snmp_ifmib.yaml: |
     - targets:
       - sw1p.01.internal
@@ -57,13 +41,6 @@ data:
         name: "ert2v"
         type: "network"
         vm: true
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: sd-snmp-nec-ix
-  namespace: metrics-servers
-data:
   sd_snmp_nec_ix.yaml: |
     - targets:
       - ert1p.01.internal

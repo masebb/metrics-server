@@ -1,9 +1,4 @@
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: metrics-servers
----
-#prometheus
+#kube-prometheus-stack configs
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -13,36 +8,36 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/masebb/metrics-server.git'
-    path: prometheus/
+    path: configs/
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: metrics-servers
-  syncPolicy:
-    automated: {}
+    namespace: monitoring
 ---
-#alertmanager
+#kube-prometheus-stack
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: alertmanager
+  name: prometheus
   namespace: argocd
 spec:
   project: default
   sources:
-    - chart: alertmanager
-      repoURL: 'https://prometheus-community.github.io/helm-charts'
-      targetRevision: 0.26.0
+    - chart: kube-prometheus-stack
+      repoURL: https://prometheus-community.github.io/helm-charts
+      targetRevision: 45.7.1
       helm:
-        valueFiles:
-          - $myRepo/values/alertmanager-values.yaml
+          valueFiles:
+            - $myRepo/values/kube-prometheus-stack.yaml
     - repoURL: 'https://github.com/masebb/metrics-server.git'
       targetRevision: HEAD
       ref: myRepo
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: metrics-servers
+    namespace: monitoring
   syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
     automated: {}
 ---
 #alertmanager-discord
@@ -59,6 +54,6 @@ spec:
     targetRevision: 0.2.3
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: metrics-servers
+    namespace: monitoring
   syncPolicy:
     automated: {}
