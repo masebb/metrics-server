@@ -2,7 +2,7 @@ prometheus:
   prometheusSpec:
     scrapeInterval: "10s"
     configMaps:
-     - "prometeus-targets"
+     - "prometheus-targets"
     additionalScrapeConfigs: 
       - job_name: "prometheus"
         static_configs:
