@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: prometeus-targets
+  name: prometheus-targets
 data:
   sd_node.yaml: |
     - targets:
