@@ -58,7 +58,7 @@ spec:
   sources:
     - chart: alertmanager-discord
       repoURL: 'https://masgustavos.github.io/helm'
-      targetRevision: 0.2.3
+      targetRevision: 0.0.7
       helm:
         valueFiles:
           - $myRepo/values/alertmanager-discord.yaml
