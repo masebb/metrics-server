@@ -30,9 +30,21 @@ data:
         type: "network"
         region: "01"
     - targets:
+      - sw2p.01.internal
+      labels:
+        name: "01sw2p"
+        type: "network"
+        region: "01"
+    - targets:
       - ap1p.01.internal
       labels:
         name: "01ap1p"
+        type: "network"
+        region: "01"
+    - targets:
+      - ap2p.01.internal
+      labels:
+        name: "01ap2p"
         type: "network"
         region: "01"
     - targets:

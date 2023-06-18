@@ -55,10 +55,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: alertmanager-discord
-    repoURL: 'https://specklesystems.github.io/alertmanager-discord/stable/'
-    targetRevision: 0.2.3
+  sources:
+    - chart: alertmanager-discord
+      repoURL: 'https://masgustavos.github.io/helm'
+      targetRevision: 0.2.3
+      helm:
+        valueFiles:
+          - $myRepo/values/alertmanager-discord.yaml
+    - repoURL: 'https://github.com/masebb/metrics-server.git'
+      targetRevision: HEAD
+      ref: myRepo
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring

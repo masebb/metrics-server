@@ -1,0 +1,4 @@
+configAsSecret:
+  name: "alertmanager-discord-secret"
+config:
+  prometheusURL: atodesetteisuru.powerfulfamily.net
