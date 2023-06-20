@@ -5,7 +5,8 @@ alertmanager:
       webhook_configs:
       - url: 'http://alertmanager-discord.monitoring.svc.cluster.local:8080/default'
     - name: 'discord-rental-server-support'
-    - url: 'http://alertmanager-discord.monitoring.svc.cluster.local:8080/rental-server-support'
+      webhook_configs:
+      - url: 'http://alertmanager-discord.monitoring.svc.cluster.local:8080/rental-server-support'
     route:
       routes:
         - receiver: "discord-default"
