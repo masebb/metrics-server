@@ -1,4 +1,5 @@
 alertmanager:
+  enabled: true
   config:
     receivers:
     - name: 'discord-default'
