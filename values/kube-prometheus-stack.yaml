@@ -1,5 +1,4 @@
 alertmanager:
-  enabled: true
   config:
     receivers:
     - name: 'discord-default'
@@ -8,9 +7,9 @@ alertmanager:
     - name: 'discord-rental-server-support'
       webhook_configs:
       - url: 'http://alertmanager-discord.monitoring.svc.cluster.local:8080/rental-server-support'
+    - name: 'null'
     route:
-      routes:
-        - receiver: "discord-default"
+      receiver: "discord-default"
 prometheus:
   prometheusSpec:
     scrapeInterval: "10s"
